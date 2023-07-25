@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
 export default class CreateClass1690298615240 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
@@ -6,39 +6,39 @@ export default class CreateClass1690298615240 implements MigrationInterface {
 
     await queryRunner.createTable(
       new Table({
-        name: "class",
+        name: 'class',
         columns: [
           {
-            name: "id",
-            type: "uuid",
+            name: 'id',
+            type: 'uuid',
             isPrimary: true,
-            generationStrategy: "uuid",
-            default: "uuid_generate_v4()",
+            generationStrategy: 'uuid',
+            default: 'uuid_generate_v4()',
           },
           {
-            name: "name",
-            type: "varchar",
+            name: 'name',
+            type: 'varchar',
           },
           {
-            name: "duration",
-            type: "integer",
+            name: 'duration',
+            type: 'integer',
           },
           {
-            name: "created_at",
-            type: "timestamp",
-            default: "now()",
+            name: 'created_at',
+            type: 'timestamp',
+            default: 'now()',
           },
           {
-            name: "updated_at",
-            type: "timestamp",
-            default: "now()",
+            name: 'updated_at',
+            type: 'timestamp',
+            default: 'now()',
           },
         ],
-      })
+      }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("class");
+    await queryRunner.dropTable('class');
   }
 }

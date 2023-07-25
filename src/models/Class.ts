@@ -4,11 +4,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
+} from 'typeorm';
 
-@Entity("class")
+@Entity('class')
 export default class Class {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column({

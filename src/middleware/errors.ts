@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { AppError } from '../errors/AppError';
+import AppError from '../errors/AppError';
 
 export default function handleAppErrors(
   err: Error,
@@ -7,15 +7,20 @@ export default function handleAppErrors(
   res: Response,
   next: NextFunction,
 ): Response {
-  if (err instanceof AppError) {
-    return res.status(err.statusCode).json({
-      message: err.message,
-    });
-  }
+  try {
+    if (err instanceof AppError) {
+      return res.status(err.statusCode).json({
+        message: err.message,
+      });
+    }
 
-  // NOTE: Lidar com error não identificado
-  return res.status(500).json({
-    status: 'error',
-    message: `Internal server error - ${err.message}`,
-  });
+    // NOTE: Lidar com error não identificado
+    return res.status(500).json({
+      status: 'error',
+      message: `Internal server error - ${err.message}`,
+    });
+  } catch (error) {
+    next();
+    return res.status(500).send();
+  }
 }
