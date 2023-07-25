@@ -1,6 +1,7 @@
 import { Request, Response, Router } from 'express';
-import { getRepository } from 'typeorm';
+import { getCustomRepository, getRepository } from 'typeorm';
 import Class from '../models/Class';
+import ClassRepository from '../repositories/ClassRepository';
 
 const classRouter = Router();
 
@@ -21,10 +22,9 @@ classRouter.get('/', async (req: Request, res: Response) => {
 });
 
 classRouter.get('/:name', async (req: Request, res: Response) => {
-  const repo = getRepository(Class);
-  const result = await repo.find({
-    name: req.params.name,
-  });
+  const repo = getCustomRepository(ClassRepository);
+
+  const result = await repo.findByName(req.params.name);
 
   return res.json(result);
 });
