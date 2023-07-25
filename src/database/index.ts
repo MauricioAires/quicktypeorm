@@ -1,3 +1,13 @@
-import { NetConnectOpts, createConnection } from "net";
+import { getConnectionOptions, createConnection } from 'typeorm';
 
-createConnection({} as NetConnectOpts);
+interface Options {
+  host: string;
+}
+
+getConnectionOptions().then(options => {
+  const newOptions = options as Options;
+  newOptions.host = 'localhost';
+  createConnection({
+    ...options,
+  });
+});
