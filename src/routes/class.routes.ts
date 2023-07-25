@@ -12,4 +12,21 @@ classRouter.post('/', async (req: Request, res: Response) => {
   return res.status(201).json(result);
 });
 
+classRouter.get('/', async (req: Request, res: Response) => {
+  const repo = getRepository(Class);
+
+  const result = await repo.find();
+
+  return res.status(201).json(result);
+});
+
+classRouter.get('/:name', async (req: Request, res: Response) => {
+  const repo = getRepository(Class);
+  const result = await repo.find({
+    name: req.params.name,
+  });
+
+  return res.json(result);
+});
+
 export default classRouter;
