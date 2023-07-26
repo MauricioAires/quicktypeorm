@@ -2,19 +2,13 @@
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
-  "username": "postgres",
-  "password": "docker",
+  "username": "docker",
+  "password": "ignite",
   "database": "mussum",
-  "entities": [
-    "src/models/**/*.ts"
- ],
- "migrations": [
-  "src/migrations/**/*.ts"
-],
- "cli":{
-  "migrationsDir": [
-    "src/migrations/"
-  ],
-  "entitiesDir": "src/models"
+  "entities": ["src/models/**/*.ts"],
+  "migrations": ["src/migrations/**/*.ts"],
+  "cli": {
+    "migrationsDir": "src/migrations/",
+    "entitiesDir": "src/models"
   }
 }
