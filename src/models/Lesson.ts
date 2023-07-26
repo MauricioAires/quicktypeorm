@@ -32,7 +32,16 @@ export default class Lesson {
    * todas as colunas do banco de dados no modelo snake_case
    */
 
-  @ManyToOne(type => Class, lessons => Lesson)
+  /**
+   * eager -> sempre que for feito um find na lesson
+   * ele já vai trazer as classes automaticamente
+   *
+   * importante o eager só pode ser usado em uma ponta
+   * caso seja adicionado nos dois irá criar um loop
+   */
+  @ManyToOne(type => Class, lessons => Lesson, {
+    eager: true,
+  })
   @JoinColumn({
     name: 'classe_id',
   })
