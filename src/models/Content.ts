@@ -15,7 +15,9 @@ export default class Content {
   id: string;
 
   @OneToOne(type => Lesson, content => Content)
-  @JoinColumn()
+  @JoinColumn({
+    name: 'lesson_id',
+  })
   lesson: Lesson;
 
   @Column()
