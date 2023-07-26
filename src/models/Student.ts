@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinTable,
+  ManyToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Class from './Class';
 
 @Entity('student')
 export default class Student {
@@ -16,6 +19,23 @@ export default class Student {
 
   @Column()
   key: number;
+
+  /**
+   * [Many to Many] só é preciso configurar em um dos
+   * models/entities
+   *
+   */
+  @ManyToMany(type => Class)
+  @JoinTable({
+    name: 'students_classes',
+    joinColumn: {
+      name: 'student_id',
+    },
+    inverseJoinColumn: {
+      name: 'class_id',
+    },
+  })
+  classes: Class[];
 
   @Column()
   link_content: string;
