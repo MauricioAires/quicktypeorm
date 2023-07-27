@@ -1,3 +1,4 @@
+import { IsEmail, Max, MaxLength, Min, MinLength } from 'class-validator';
 import {
   Column,
   CreateDateColumn,
@@ -7,6 +8,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+
 import Class from './Class';
 
 @Entity('student')
@@ -15,9 +17,13 @@ export default class Student {
   id: string;
 
   @Column()
+  @MaxLength(50)
+  @MinLength(2)
   name: string;
 
   @Column()
+  @Max(999_999)
+  @Min(100_000)
   key: number;
 
   /**
@@ -38,6 +44,7 @@ export default class Student {
   classes: Class[];
 
   @Column()
+  @IsEmail()
   email: string;
 
   @CreateDateColumn()
