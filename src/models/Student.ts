@@ -38,7 +38,7 @@ export default class Student {
   classes: Class[];
 
   @Column()
-  link_content: string;
+  email: string;
 
   @CreateDateColumn()
   created_at: Date;
