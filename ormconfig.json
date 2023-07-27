@@ -3,6 +3,7 @@
   "host": "localhost",
   "port": 5432,
   "username": "docker",
+  "cache": true,
   "password": "ignite",
   "database": "mussum",
   "entities": ["src/models/**/*.ts"],
