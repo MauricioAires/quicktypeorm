@@ -4,11 +4,7 @@
   "port": 5432,
   "username": "docker",
   "cache": {
-    "type": "redis",
-    "options": {
-      "host": "localhost",
-      "port": 6379
-    }
+    "duration": 20000
   },
   "password": "ignite",
   "database": "mussum",
