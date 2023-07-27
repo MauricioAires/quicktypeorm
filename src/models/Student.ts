@@ -1,4 +1,5 @@
 import { IsEmail, Max, MaxLength, Min, MinLength } from 'class-validator';
+import { EncryptionTransformer } from 'typeorm-encrypted';
 import {
   Column,
   CreateDateColumn,
@@ -10,13 +11,18 @@ import {
 } from 'typeorm';
 
 import Discipline from './Discipline';
+import { MyCrypto } from '../helpers/crypto';
 
 @Entity('student')
 export default class Student {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({
+    type: 'varchar',
+    nullable: false,
+    transformer: MyCrypto,
+  })
   @MaxLength(50, {
     message: 'Um nome precisar ter no máximo 50 caracteres',
   })
