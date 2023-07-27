@@ -19,6 +19,11 @@ export default class Class {
   })
   name: string;
 
+  @Column({
+    nullable: true,
+  })
+  description: string;
+
   @OneToMany(type => Lesson, classe => Class)
   lessons: Lesson[];
 
