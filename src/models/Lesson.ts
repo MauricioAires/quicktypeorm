@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 import Content from './Content';
-import Class from './Class';
+import Discipline from './Discipline';
 
 @Entity('lesson')
 export default class Lesson {
@@ -39,13 +39,13 @@ export default class Lesson {
    * importante o eager só pode ser usado em uma ponta
    * caso seja adicionado nos dois irá criar um loop
    */
-  @ManyToOne(type => Class, lessons => Lesson, {
+  @ManyToOne(type => Discipline, lessons => Lesson, {
     eager: true,
   })
   @JoinColumn({
     name: 'classe_id',
   })
-  classe: Class;
+  classe: Discipline;
 
   @Column()
   link_content: string;

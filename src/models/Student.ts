@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-import Class from './Class';
+import Discipline from './Discipline';
 
 @Entity('student')
 export default class Student {
@@ -35,7 +35,7 @@ export default class Student {
    * models/entities
    *
    */
-  @ManyToMany(type => Class)
+  @ManyToMany(type => Discipline)
   @JoinTable({
     name: 'students_classes',
     joinColumn: {
@@ -45,7 +45,7 @@ export default class Student {
       name: 'class_id',
     },
   })
-  classes: Class[];
+  classes: Discipline[];
 
   @Column()
   @IsEmail()

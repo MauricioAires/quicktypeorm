@@ -1,5 +1,5 @@
 import { EntityRepository, Repository } from 'typeorm';
-import Class from '../models/Class';
+import Discipline from '../models/Discipline';
 
 /**
  * NOTE: durante o curso foi informado
@@ -8,9 +8,9 @@ import Class from '../models/Class';
  *
  * ORM é a sigla para "Object-Relational Mapping" (Mapeamento Objeto-Relacional, em português).
  */
-@EntityRepository(Class)
-export default class ClassRepository extends Repository<Class> {
-  public async findByName(name: string): Promise<Class[]> {
+@EntityRepository(Discipline)
+export default class DisciplineRepository extends Repository<Discipline> {
+  public async findByName(name: string): Promise<Discipline[]> {
     return this.find({
       where: {
         name,
